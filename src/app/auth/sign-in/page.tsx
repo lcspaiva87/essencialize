@@ -144,7 +144,7 @@ export default function LoginScreen() {
 
               <Button
                 type="submit"
-                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 transition-colors"
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 transition-transform transform hover:translate-y-[-3px] shadow-lg hover:shadow-[0_10px_20px_rgba(16,185,129,0.2)]"
               >
                 Entrar
               </Button>
