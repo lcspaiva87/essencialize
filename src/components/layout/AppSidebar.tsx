@@ -25,7 +25,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 
 const navigationItems = [
-  { title: "Dashboard", url: "/", icon: BarChart3 },
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
   { title: "Receitas", url: "/receitas", icon: TrendingUp },
   { title: "Despesas", url: "/despesas", icon: CreditCard },
   { title: "Transações", url: "/transacoes", icon: DollarSign },
