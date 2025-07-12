@@ -28,10 +28,10 @@ const StatsCard: React.FC<StatsCardProps> = ({
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-gray-600 mb-1">
+          <p className="text-base font-normal text-gray-500 mb-1">
             {title}
           </p>
-          <p className="text-2xl font-bold text-gray-900 mb-2">
+          <p className="text-lg font-bold text-gray-900 mb-2">
             {value}
           </p>
           <p className={`text-sm font-medium ${changeColorClass}`}>

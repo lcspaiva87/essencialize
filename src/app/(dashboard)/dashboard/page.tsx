@@ -6,13 +6,16 @@ import {
   TrendingDown,
   Target,
   CreditCard,
-  PiggyBank
+  PiggyBank,
 } from 'lucide-react';
 import ExpenseChart from './_components/ExpenseChart';
 import StatsCard from './_components/StatsCard';
 import GoalsProgress from './_components/GoalsProgress';
 import RecentTransactions from './_components/RecentTransactions';
 import { useFinancialData } from '@/hooks/useFinancialData';
+import { Button } from '@/components/ui/button';
+import { ChartContent } from './chart/chat-bar';
+import ChartPizza from './chart/chart-pizza';
 
 const Dashboard: React.FC = () => {
   const {
@@ -28,14 +31,27 @@ const Dashboard: React.FC = () => {
   const savingsRate = monthlyIncome > 0 ? ((monthlyNet / monthlyIncome) * 100).toFixed(1) : '0';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Dashboard Financeiro
-        </h1>
-        <p className="text-gray-600">
-          Visão geral das suas finanças em tempo real
-        </p>
+    <div className=" px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <div className="mb-8 flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Dashboard Financeiro
+          </h1>
+          <p className="text-gray-600">
+            Visão geral das suas finanças em tempo real
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant="outline">
+            Dia
+          </Button>
+          <Button variant="outline" className='bg-gray-100 text-gray-900'>
+            Semana
+          </Button>
+          <Button variant="outline">
+            Mês
+          </Button>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -73,7 +89,10 @@ const Dashboard: React.FC = () => {
           color="bg-gradient-to-r from-purple-500 to-purple-600"
         />
       </div>
-
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8'>
+        <ChartContent />
+        <ChartPizza />
+      </div>
       {/* Charts and Goals */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <ExpenseChart data={expensesByCategory} />

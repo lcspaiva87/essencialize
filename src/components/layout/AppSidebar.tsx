@@ -48,10 +48,10 @@ export function AppSidebar() {
         <div className="p-4 border-b">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
+              <span className="text-white font-bold text-sm"></span>
             </div>
             {state === "expanded" && (
-              <span className="font-bold text-gray-800">Mordomize</span>
+              <span className="font-bold text-gray-800"></span>
             )}
           </div>
         </div>
