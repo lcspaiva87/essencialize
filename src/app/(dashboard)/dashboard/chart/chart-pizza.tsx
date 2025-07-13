@@ -66,7 +66,7 @@ const renderCustomizedLabel = ({
 
 const ChartPizza = () => {
   return (
-    <div className="p-4 border border-gray-100 shadow-sm rounded-xl">
+    <div className="p-4 border border-gray-100 shadow-sm rounded-xl bg-white">
       <h2 className='text-base font-normal text-gray-500'>Despesas por Categoria</h2>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>

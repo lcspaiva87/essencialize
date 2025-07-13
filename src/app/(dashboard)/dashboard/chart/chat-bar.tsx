@@ -81,7 +81,7 @@ function ChartHeader() {
 
 export function ChartContent() {
   return (
-    <div className='p-4 border border-gray-100 shadow-sm rounded-xl'>
+    <div className='p-4 border bg-white border-gray-100 shadow-sm rounded-xl'>
       <ChartHeader />
       <ChatBar />
     </div>

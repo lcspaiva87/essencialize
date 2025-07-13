@@ -31,8 +31,10 @@ const Dashboard: React.FC = () => {
   const savingsRate = monthlyIncome > 0 ? ((monthlyNet / monthlyIncome) * 100).toFixed(1) : '0';
 
   return (
-    <div className=" px-4 sm:px-6 lg:px-8 py-8 w-full">
-      <div className="mb-8 flex items-center justify-between">
+    <main className=" px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+
+      <header className="mb-8 flex items-center justify-between bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Dashboard Financeiro
@@ -52,7 +54,7 @@ const Dashboard: React.FC = () => {
             Mês
           </Button>
         </div>
-      </div>
+      </header>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -134,7 +136,7 @@ const Dashboard: React.FC = () => {
           </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
