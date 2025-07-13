@@ -1,9 +1,43 @@
 import Header from "@/components/header";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"; import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FilterIcon, PlusIcon } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Edit, Eye, FilterIcon, MoreHorizontal, PlusIcon, SearchIcon, Trash2, X } from "lucide-react";
 
 export default function Receitas() {
+
+
+
+  const Earnings = [
+    {
+      data: "2024-01-15",
+      descricao: "Compra de ingredientes",
+      categoria: "Alimentação",
+      valor: 150.00,
+      recorrente: true
+    },
+    {
+      data: "2024-01-20",
+      descricao: "Pagamento de aluguel",
+      categoria: "Moradia",
+      valor: 1200.00,
+      recorrente: false
+    },
+  ];
+
   return (
     <main className="px-4 sm:px-6 lg:px-8 py-8 w-full">
       <Header
@@ -83,7 +117,68 @@ export default function Receitas() {
               Digite um termo para pesquisar nas receitas
             </span>
           </fieldset>
+
+          <div className="flex gap-2 col-span-full">
+            <Button className="col-span-full">
+              <SearchIcon className="w-4 h-4" />
+              Pesquisar
+            </Button>
+
+            <Button className="col-span-full">
+              <X className="w-4 h-4" />
+              Limpar
+            </Button>
+          </div>
         </form>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[250px]">Data</TableHead>
+                <TableHead>Descrição</TableHead>
+                <TableHead>Categoria</TableHead>
+                <TableHead>Valor</TableHead>
+                <TableHead>Recorrente</TableHead>
+                <TableHead className="w-[100px]">Ações</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {Earnings.map((receita, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{new Date(receita.data).toLocaleDateString('pt-BR')}</TableCell>
+                  <TableCell>{receita.descricao}</TableCell>
+                  <TableCell>{receita.categoria}</TableCell>
+                  <TableCell>{receita.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</TableCell>
+                  <TableCell>{receita.recorrente ? "Sim" : "Não"}</TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Abrir menu</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem>
+                          <Eye className="mr-2 h-4 w-4" />
+                          Visualizar
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Edit className="mr-2 h-4 w-4" />
+                          Editar
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-red-600">
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Excluir
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </section>
     </main>
   )
