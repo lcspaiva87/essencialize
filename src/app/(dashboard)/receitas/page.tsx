@@ -119,12 +119,12 @@ export default function Receitas() {
           </fieldset>
 
           <div className="flex gap-2 col-span-full">
-            <Button className="col-span-full">
+            <Button className="col-span-full text-white">
               <SearchIcon className="w-4 h-4" />
               Pesquisar
             </Button>
 
-            <Button className="col-span-full">
+            <Button className="col-span-full text-white">
               <X className="w-4 h-4" />
               Limpar
             </Button>

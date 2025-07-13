@@ -5,7 +5,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 w-full">
       <div className="flex items-center justify-between w-auto h-16 bg-white p-4 shadow-md">
-        <span className="text-lg font-bold text-gray-800">Dashboard Financeiro</span>
         <div className="flex items-center ml-auto">
           <Menubar className="bg-transparent border-none" >
             <MenubarMenu>

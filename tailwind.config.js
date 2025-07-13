@@ -7,6 +7,16 @@ module.exports = {
     theme: {
     	extend: {
     		colors: {
+          primary: '#4A90E2',
+          'primary-dark': '#3A7BD5',
+          secondary: '#6A7B8D',
+          'neutral-light': '#F5F7FA',
+          'neutral-medium': '#E0E6ED',
+          'neutral-dark': '#D1D9E0',
+          '2C3E50': '#2C3E50', // Para o texto principal
+          success: '#5CB85C',
+          error: '#D9534F',
+          warning: '#F0AD4E',
     			background: 'hsl(var(--background))',
     			foreground: 'hsl(var(--foreground))',
     			card: {
@@ -17,10 +27,7 @@ module.exports = {
     				DEFAULT: 'hsl(var(--popover))',
     				foreground: 'hsl(var(--popover-foreground))'
     			},
-    			primary: {
-    				DEFAULT: 'hsl(var(--primary))',
-    				foreground: 'hsl(var(--primary-foreground))'
-    			},
+    
     			secondary: {
     				DEFAULT: 'hsl(var(--secondary))',
     				foreground: 'hsl(var(--secondary-foreground))'

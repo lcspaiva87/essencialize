@@ -25,8 +25,8 @@ export default function Header({
         onClick={onClick}
         aria-label={buttonText}
         disabled={disabled}
-        variant="outline"
-        className="flex items-center gap-2 bg-gray-100 text-gray-900"
+
+        className="flex items-center gap-2  text-white"
       >
         {buttonIcon && <span>{buttonIcon}</span>}
         {buttonText}
