@@ -124,7 +124,9 @@ export default function Receitas() {
               Pesquisar
             </Button>
 
-            <Button className="col-span-full text-white">
+            <Button
+              variant="outline"
+              className="col-span-full ">
               <X className="w-4 h-4" />
               Limpar
             </Button>
