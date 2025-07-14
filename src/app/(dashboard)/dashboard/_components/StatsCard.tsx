@@ -1,13 +1,13 @@
-import type { DivideIcon as LucideIcon } from 'lucide-react'
-import type React from 'react'
+import type { DivideIcon as LucideIcon } from 'lucide-react';
+import type React from 'react';
 
 interface StatsCardProps {
-  title: string
-  value: string
-  change: string
-  changeType: 'positive' | 'negative' | 'neutral'
-  icon: typeof LucideIcon
-  color: string
+  title: string;
+  value: string;
+  change: string;
+  changeType: 'positive' | 'negative' | 'neutral';
+  icon: typeof LucideIcon;
+  color: string;
 }
 
 const StatsCard: React.FC<StatsCardProps> = ({
@@ -22,7 +22,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     positive: 'text-green-600',
     negative: 'text-red-600',
     neutral: 'text-gray-600',
-  }[changeType]
+  }[changeType];
 
   return (
     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
@@ -37,7 +37,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StatsCard
+export default StatsCard;

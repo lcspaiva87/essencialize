@@ -1,26 +1,26 @@
-import { Calendar, Target, TrendingUp } from 'lucide-react'
-import type React from 'react'
-import type { Goal } from '@/types'
+import type { Goal } from '@/types';
+import { Calendar, Target, TrendingUp } from 'lucide-react';
+import type React from 'react';
 
 interface GoalsProgressProps {
-  goals: Goal[]
+  goals: Goal[];
 }
 
 const GoalsProgress: React.FC<GoalsProgressProps> = ({ goals }) => {
-  const activeGoals = goals.filter((goal) => !goal.completed).slice(0, 3)
+  const activeGoals = goals.filter((goal) => !goal.completed).slice(0, 3);
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'high':
-        return 'bg-red-100 text-red-800'
+        return 'bg-red-100 text-red-800';
       case 'medium':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-yellow-100 text-yellow-800';
       case 'low':
-        return 'bg-green-100 text-green-800'
+        return 'bg-green-100 text-green-800';
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gray-100 text-gray-800';
     }
-  }
+  };
 
   return (
     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
@@ -33,12 +33,12 @@ const GoalsProgress: React.FC<GoalsProgressProps> = ({ goals }) => {
 
       <div className="space-y-4">
         {activeGoals.map((goal) => {
-          const progress = (goal.currentAmount / goal.targetAmount) * 100
-          const remainingAmount = goal.targetAmount - goal.currentAmount
+          const progress = (goal.currentAmount / goal.targetAmount) * 100;
+          const remainingAmount = goal.targetAmount - goal.currentAmount;
           const daysRemaining = Math.ceil(
             (new Date(goal.deadline).getTime() - new Date().getTime()) /
-              (1000 * 60 * 60 * 24)
-          )
+              (1000 * 60 * 60 * 24),
+          );
 
           return (
             <div className="rounded-lg bg-gray-50 p-4" key={goal.id}>
@@ -83,11 +83,11 @@ const GoalsProgress: React.FC<GoalsProgressProps> = ({ goals }) => {
                 </span>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GoalsProgress
+export default GoalsProgress;

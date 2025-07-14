@@ -1,15 +1,15 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
-} from '@/components/ui/menubar'
+} from '@/components/ui/menubar';
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-screen w-full flex-col bg-gray-100">
@@ -40,5 +40,5 @@ export default function DashboardLayout({
       </div>
       {children}
     </div>
-  )
+  );
 }

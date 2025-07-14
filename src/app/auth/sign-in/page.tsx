@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { BarChart3, Eye, EyeOff, Shield, Users, Zap } from 'lucide-react'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { BarChart3, Eye, EyeOff, Shield, Users, Zap } from 'lucide-react';
+import { useState } from 'react';
 
 export default function LoginScreen() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [rememberMe, setRememberMe] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-900">
@@ -152,7 +152,7 @@ export default function LoginScreen() {
                     id="remember"
                     onCheckedChange={(checked) =>
                       setRememberMe(
-                        checked === 'indeterminate' ? false : checked
+                        checked === 'indeterminate' ? false : checked,
                       )
                     }
                   />
@@ -187,5 +187,5 @@ export default function LoginScreen() {
         </div>
       </div>
     </div>
-  )
+  );
 }

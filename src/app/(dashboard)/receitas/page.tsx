@@ -1,3 +1,21 @@
+import Header from '@/components/header';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { Select, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import {
   Edit,
   Eye,
@@ -7,25 +25,7 @@ import {
   SearchIcon,
   Trash2,
   X,
-} from 'lucide-react'
-import Header from '@/components/header'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger, SelectValue } from '@/components/ui/select'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+} from 'lucide-react';
 
 export default function Receitas() {
   const Earnings = [
@@ -45,7 +45,7 @@ export default function Receitas() {
       valor: 1200.0,
       recorrente: false,
     },
-  ]
+  ];
 
   return (
     <main className="w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -211,5 +211,5 @@ export default function Receitas() {
         </div>
       </section>
     </main>
-  )
+  );
 }

@@ -1,23 +1,23 @@
-import { ArrowDownRight, ArrowUpRight, Clock, Hash } from 'lucide-react'
-import type React from 'react'
-import type { Transaction } from '@/types'
+import type { Transaction } from '@/types';
+import { ArrowDownRight, ArrowUpRight, Clock, Hash } from 'lucide-react';
+import type React from 'react';
 
 interface RecentTransactionsProps {
-  transactions: Transaction[]
+  transactions: Transaction[];
 }
 
 const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   transactions,
 }) => {
-  const recentTransactions = transactions.slice(0, 5)
+  const recentTransactions = transactions.slice(0, 5);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: '2-digit',
       year: '2-digit',
-    })
-  }
+    });
+  };
 
   return (
     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
@@ -99,7 +99,7 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RecentTransactions
+export default RecentTransactions;

@@ -1,19 +1,19 @@
-import type React from 'react'
-import type { JSX } from 'react'
-import { ModalCustom } from '@/app/(dashboard)/receitas/_components/modal-create-earnings'
-import type { FormField } from '@/types/form-filed-types'
-import { Button } from './ui/button'
+import { ModalCustom } from '@/app/(dashboard)/receitas/_components/modal-create-earnings';
+import type { FormField } from '@/types/form-filed-types';
+import type React from 'react';
+import type { JSX } from 'react';
+import { Button } from './ui/button';
 
 interface HeaderProps {
-  title: string
-  description: string
-  buttonText?: string
-  buttonIcon?: React.ReactNode
-  onClick?: () => void
-  disabled?: boolean
-  isCreate: boolean
-  fields: FormField[]
-  bgColor?: string
+  title: string;
+  description: string;
+  buttonText?: string;
+  buttonIcon?: React.ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  isCreate: boolean;
+  fields: FormField[];
+  bgColor?: string;
 }
 
 export default function Header({
@@ -27,19 +27,16 @@ export default function Header({
   fields,
   bgColor,
 }: HeaderProps) {
-  let actionButton: JSX.Element | null = null // Initialize a variable to hold the button
+  let actionButton: JSX.Element | null = null; // Initialize a variable to hold the button
 
   if (buttonText) {
-    // Check if buttonText exists
     actionButton = isCreate ? (
       <ModalCustom
         bgColor={bgColor}
         buttonIcon={buttonIcon}
         buttonText={buttonText}
         fields={fields}
-        onSubmit={() => {
-          /* Intencionalmente vazio */
-        }}
+        onSubmit={() => {}}
       />
     ) : (
       <Button
@@ -51,7 +48,7 @@ export default function Header({
         {buttonIcon && <span>{buttonIcon}</span>}
         {buttonText}
       </Button>
-    )
+    );
   }
 
   return (
@@ -69,5 +66,5 @@ export default function Header({
         {actionButton} {/* Render the button if it was assigned */}
       </div>
     </header>
-  )
+  );
 }

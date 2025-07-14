@@ -1,22 +1,47 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
-  "extends": ["ultracite"],
-  "javascript": {
-    "formatter": {
-      "semicolons": "asNeeded"
-    }
-  },
-  "css": {
-    "linter": {
-      "enabled": false
-    }
+  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "organizeImports": {
+    "enabled": true
   },
   "linter": {
+    "enabled": true,
     "rules": {
-      "performance": {
-        "noDynamicNamespaceImportAccess": "error",
-        "noNamespaceImport": "off"
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off"
+      },
+      "complexity": {
+        // Add this section
+        "noForEach": "off" // Disable the noForEach rule
       }
     }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always"
+    }
+  },
+  "files": {
+    "ignore": [
+      "node_modules/**/*",
+      "dist/**/*",
+      "build/**/*",
+      ".next/**/*",
+      "coverage/**/*",
+      "**/*.min.js",
+      "**/*.bundle.js",
+      "public/**/*",
+      ".cache/**/*",
+      ".vercel/**/*",
+      ".git/**/*",
+      "**/*.d.ts"
+    ]
   }
 }

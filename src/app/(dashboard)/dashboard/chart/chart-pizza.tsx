@@ -5,7 +5,7 @@ import {
   PieChart,
   ResponsiveContainer,
   Tooltip,
-} from 'recharts'
+} from 'recharts';
 
 const data = [
   {
@@ -28,7 +28,7 @@ const data = [
     name: 'Outros',
     value: 250,
   },
-]
+];
 
 const COLORS = [
   '#8884d8',
@@ -37,20 +37,20 @@ const COLORS = [
   '#ff7f50',
   '#a4de6c',
   '#d0ed57',
-]
+];
 
 interface PayloadItem {
-  name: string
-  value: number
-  percent: number
+  name: string;
+  value: number;
+  percent: number;
 }
 
 const CustomTooltip = ({
   active,
   payload,
 }: {
-  active?: boolean
-  payload?: PayloadItem[]
+  active?: boolean;
+  payload?: PayloadItem[];
 }) => {
   if (active && payload && payload.length) {
     return (
@@ -59,10 +59,10 @@ const CustomTooltip = ({
         <p className="text-gray-700 dark:text-gray-300">{`Valor: R$ ${payload[0].value.toLocaleString('pt-BR')}`}</p>
         <p className="text-gray-700 dark:text-gray-300">{`Porcentagem: ${(payload[0].percent * 100).toFixed(2)}%`}</p>
       </div>
-    )
+    );
   }
-  return null
-}
+  return null;
+};
 
 const renderCustomizedLabel = ({
   cx,
@@ -72,18 +72,18 @@ const renderCustomizedLabel = ({
   percent,
   index,
 }: {
-  cx: number
-  cy: number
-  midAngle: number
-  innerRadius: number
-  outerRadius: number
-  percent: number
-  index: number
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+  index: number;
 }) => {
-  const RADIAN = Math.PI / 180
-  const radius = outerRadius + 20 // Distance from the center to the label
-  const x = cx + radius * Math.cos(-midAngle * RADIAN)
-  const y = cy + radius * Math.sin(-midAngle * RADIAN)
+  const RADIAN = Math.PI / 180;
+  const radius = outerRadius + 20; // Distance from the center to the label
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
     <text
@@ -96,8 +96,8 @@ const renderCustomizedLabel = ({
     >
       {`${data[index].name} ${(percent * 100).toFixed(0)}%`}
     </text>
-  )
-}
+  );
+};
 
 const ChartPizza = () => {
   return (
@@ -146,7 +146,7 @@ const ChartPizza = () => {
         </PieChart>
       </ResponsiveContainer>
     </div>
-  )
-}
+  );
+};
 
-export default ChartPizza
+export default ChartPizza;

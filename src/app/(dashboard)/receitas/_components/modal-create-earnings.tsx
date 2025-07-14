@@ -1,49 +1,55 @@
-import { DollarSign, Wallet, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@/components/ui/select';
+import { DollarSign, Wallet, X } from 'lucide-react';
 
-type FieldType = 'text' | 'number' | 'date' | 'select' | 'checkbox' | 'currency'
+type FieldType =
+  | 'text'
+  | 'number'
+  | 'date'
+  | 'select'
+  | 'checkbox'
+  | 'currency';
 
 interface SelectOption {
-  value: string
-  label: string
+  value: string;
+  label: string;
 }
 
 interface FormField {
-  id: string
-  name: string
-  label: string
-  type: FieldType
-  placeholder?: string
-  required?: boolean
-  options?: SelectOption[]
-  icon?: React.ReactNode
-  description?: string
+  id: string;
+  name: string;
+  label: string;
+  type: FieldType;
+  placeholder?: string;
+  required?: boolean;
+  options?: SelectOption[];
+  icon?: React.ReactNode;
+  description?: string;
 }
 
 interface FlexibleModalProps {
-  buttonText: string
-  buttonIcon?: React.ReactNode
-  modalTitle?: string
-  fields: FormField[]
-  onSubmit: (data: Record<string, any>) => void
-  submitButtonText?: string
-  submitButtonIcon?: React.ReactNode
-  bgColor?: string
+  buttonText: string;
+  buttonIcon?: React.ReactNode;
+  modalTitle?: string;
+  fields: FormField[];
+  onSubmit: (data: Record<string, any>) => void;
+  submitButtonText?: string;
+  submitButtonIcon?: React.ReactNode;
+  bgColor?: string;
 }
 
 export function ModalCustom({
@@ -55,25 +61,25 @@ export function ModalCustom({
   bgColor = 'bg-primary',
 }: FlexibleModalProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const data: Record<string, any> = {}
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, any> = {};
 
     fields.forEach((field) => {
       if (field.type === 'checkbox') {
-        data[field.name] = formData.has(field.name)
+        data[field.name] = formData.has(field.name);
       } else {
-        data[field.name] = formData.get(field.name)
+        data[field.name] = formData.get(field.name);
       }
-    })
+    });
 
-    onSubmit(data)
-  }
+    onSubmit(data);
+  };
 
   const renderField = (field: FormField) => {
-    const baseClasses = 'flex gap-2 flex-col'
-    const fieldId = `${field.id}`
-    const descId = `${field.id}-desc`
+    const baseClasses = 'flex gap-2 flex-col';
+    const fieldId = `${field.id}`;
+    const descId = `${field.id}-desc`;
 
     switch (field.type) {
       case 'text':
@@ -103,7 +109,7 @@ export function ModalCustom({
               </span>
             )}
           </fieldset>
-        )
+        );
 
       case 'currency':
         return (
@@ -136,7 +142,7 @@ export function ModalCustom({
               </span>
             )}
           </fieldset>
-        )
+        );
 
       case 'select':
         return (
@@ -168,7 +174,7 @@ export function ModalCustom({
               </span>
             )}
           </fieldset>
-        )
+        );
 
       case 'checkbox':
         return (
@@ -192,12 +198,12 @@ export function ModalCustom({
               </span>
             )}
           </fieldset>
-        )
+        );
 
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <Dialog>
@@ -252,5 +258,5 @@ export function ModalCustom({
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

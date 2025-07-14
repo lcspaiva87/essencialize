@@ -1,4 +1,23 @@
-'use client'
+'use client';
+import Header from '@/components/header';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { Select, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import type { FormField } from '@/types/form-filed-types';
 import {
   Edit,
   Eye,
@@ -8,26 +27,7 @@ import {
   SearchIcon,
   Trash2,
   X,
-} from 'lucide-react'
-import Header from '@/components/header'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger, SelectValue } from '@/components/ui/select'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import type { FormField } from '@/types/form-filed-types'
+} from 'lucide-react';
 
 export default function Receitas() {
   const Earnings = [
@@ -47,7 +47,7 @@ export default function Receitas() {
       valor: 1200.0,
       recorrente: false,
     },
-  ]
+  ];
   const expensesFields: FormField[] = [
     {
       id: 'descricao',
@@ -122,7 +122,7 @@ export default function Receitas() {
       type: 'checkbox',
       description: 'Marque se esta despesa é recorrente',
     },
-  ]
+  ];
   return (
     <main className="w-full px-4 py-8 sm:px-6 lg:px-8">
       <Header
@@ -288,5 +288,5 @@ export default function Receitas() {
         </div>
       </section>
     </main>
-  )
+  );
 }

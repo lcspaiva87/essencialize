@@ -1,5 +1,5 @@
-import { AppSidebar } from '@/components/layout/AppSidebar'
-import { SidebarProvider } from '@/components/ui/sidebar'
+import { AppSidebar } from '@/components/layout/AppSidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 export default function Provider({ children }: { children: React.ReactNode }) {
   return (
@@ -7,5 +7,5 @@ export default function Provider({ children }: { children: React.ReactNode }) {
       <AppSidebar />
       {children}
     </SidebarProvider>
-  )
+  );
 }

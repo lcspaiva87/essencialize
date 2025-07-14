@@ -1,17 +1,17 @@
-import type React from 'react'
+import type React from 'react';
 
 interface ExpenseData {
-  category: string
-  amount: number
-  color: string
+  category: string;
+  amount: number;
+  color: string;
 }
 
 interface ExpenseChartProps {
-  data: ExpenseData[]
+  data: ExpenseData[];
 }
 
 const ExpenseChart: React.FC<ExpenseChartProps> = ({ data }) => {
-  const total = data.reduce((sum, item) => sum + item.amount, 0)
+  const total = data.reduce((sum, item) => sum + item.amount, 0);
 
   return (
     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
@@ -21,7 +21,7 @@ const ExpenseChart: React.FC<ExpenseChartProps> = ({ data }) => {
 
       <div className="space-y-4">
         {data.map((item) => {
-          const percentage = (item.amount / total) * 100
+          const percentage = (item.amount / total) * 100;
 
           return (
             <div
@@ -52,11 +52,11 @@ const ExpenseChart: React.FC<ExpenseChartProps> = ({ data }) => {
                 </span>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ExpenseChart
+export default ExpenseChart;

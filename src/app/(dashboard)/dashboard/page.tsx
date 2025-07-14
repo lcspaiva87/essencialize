@@ -1,4 +1,6 @@
-'use client'
+'use client';
+import { Button } from '@/components/ui/button';
+import { useFinancialData } from '@/hooks/useFinancialData';
 import {
   CreditCard,
   DollarSign,
@@ -6,16 +8,14 @@ import {
   Target,
   TrendingDown,
   TrendingUp,
-} from 'lucide-react'
-import type React from 'react'
-import { Button } from '@/components/ui/button'
-import { useFinancialData } from '@/hooks/useFinancialData'
-import ExpenseChart from './_components/ExpenseChart'
-import GoalsProgress from './_components/GoalsProgress'
-import RecentTransactions from './_components/RecentTransactions'
-import StatsCard from './_components/StatsCard'
-import ChartPizza from './chart/chart-pizza'
-import { ChartContent } from './chart/chat-bar'
+} from 'lucide-react';
+import type React from 'react';
+import ExpenseChart from './_components/ExpenseChart';
+import GoalsProgress from './_components/GoalsProgress';
+import RecentTransactions from './_components/RecentTransactions';
+import StatsCard from './_components/StatsCard';
+import ChartPizza from './chart/chart-pizza';
+import { ChartContent } from './chart/chat-bar';
 
 const Dashboard: React.FC = () => {
   const {
@@ -25,11 +25,11 @@ const Dashboard: React.FC = () => {
     expensesByCategory,
     goals,
     transactions,
-  } = useFinancialData()
+  } = useFinancialData();
 
-  const monthlyNet = monthlyIncome - monthlyExpenses
+  const monthlyNet = monthlyIncome - monthlyExpenses;
   const savingsRate =
-    monthlyIncome > 0 ? ((monthlyNet / monthlyIncome) * 100).toFixed(1) : '0'
+    monthlyIncome > 0 ? ((monthlyNet / monthlyIncome) * 100).toFixed(1) : '0';
 
   return (
     <main className=" w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -138,7 +138,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

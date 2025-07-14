@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
 import {
   Root as AvatarRoot,
   AvatarFallback as RadixAvatarFallback,
   AvatarImage as RadixAvatarImage,
-} from '@radix-ui/react-avatar'
-import React from 'react'
+} from '@radix-ui/react-avatar';
+import React from 'react';
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarRoot>,
@@ -16,13 +16,13 @@ const Avatar = React.forwardRef<
   <AvatarRoot
     className={cn(
       'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
-      className
+      className,
     )}
     ref={ref}
     {...props}
   />
-))
-Avatar.displayName = AvatarRoot.displayName
+));
+Avatar.displayName = AvatarRoot.displayName;
 
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof RadixAvatarImage>,
@@ -33,8 +33,8 @@ const AvatarImage = React.forwardRef<
     ref={ref}
     {...props}
   />
-))
-AvatarImage.displayName = RadixAvatarImage.displayName
+));
+AvatarImage.displayName = RadixAvatarImage.displayName;
 
 const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof RadixAvatarFallback>,
@@ -43,12 +43,12 @@ const AvatarFallback = React.forwardRef<
   <RadixAvatarFallback
     className={cn(
       'flex h-full w-full items-center justify-center rounded-full bg-muted',
-      className
+      className,
     )}
     ref={ref}
     {...props}
   />
-))
-AvatarFallback.displayName = RadixAvatarFallback.displayName
+));
+AvatarFallback.displayName = RadixAvatarFallback.displayName;
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarImage, AvatarFallback };

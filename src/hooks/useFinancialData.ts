@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import type { Account, Category, Goal, Transaction } from '../types'
+import { useMemo, useState } from 'react';
+import type { Account, Category, Goal, Transaction } from '../types';
 
 const mockTransactions: Transaction[] = [
   {
@@ -60,7 +60,7 @@ const mockTransactions: Transaction[] = [
     tags: ['lazer', 'família'],
     reconciled: false,
   },
-]
+];
 
 const mockCategories: Category[] = [
   {
@@ -108,7 +108,7 @@ const mockCategories: Category[] = [
     budget: 300,
     spent: 300,
   },
-]
+];
 
 const mockGoals: Goal[] = [
   {
@@ -150,7 +150,7 @@ const mockGoals: Goal[] = [
     completed: false,
     createdAt: '2024-01-01',
   },
-]
+];
 
 const mockAccounts: Account[] = [
   {
@@ -180,61 +180,61 @@ const mockAccounts: Account[] = [
     lastSync: '2024-01-20T09:15:00Z',
     active: true,
   },
-]
+];
 
 export const useFinancialData = () => {
   const [transactions, setTransactions] =
-    useState<Transaction[]>(mockTransactions)
-  const [categories, setCategories] = useState<Category[]>(mockCategories)
-  const [goals, setGoals] = useState<Goal[]>(mockGoals)
-  const [accounts] = useState<Account[]>(mockAccounts)
-  const [loading] = useState(false)
+    useState<Transaction[]>(mockTransactions);
+  const [categories, setCategories] = useState<Category[]>(mockCategories);
+  const [goals, setGoals] = useState<Goal[]>(mockGoals);
+  const [accounts] = useState<Account[]>(mockAccounts);
+  const [loading] = useState(false);
 
   const totalBalance = useMemo(() => {
-    return accounts.reduce((sum, account) => sum + account.balance, 0)
-  }, [accounts])
+    return accounts.reduce((sum, account) => sum + account.balance, 0);
+  }, [accounts]);
 
   const monthlyIncome = useMemo(() => {
-    const currentMonth = new Date().getMonth()
-    const currentYear = new Date().getFullYear()
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
 
     return transactions
       .filter((t) => {
-        const transactionDate = new Date(t.date)
+        const transactionDate = new Date(t.date);
         return (
           t.type === 'income' &&
           transactionDate.getMonth() === currentMonth &&
           transactionDate.getFullYear() === currentYear
-        )
+        );
       })
-      .reduce((sum, t) => sum + t.amount, 0)
-  }, [transactions])
+      .reduce((sum, t) => sum + t.amount, 0);
+  }, [transactions]);
 
   const monthlyExpenses = useMemo(() => {
-    const currentMonth = new Date().getMonth()
-    const currentYear = new Date().getFullYear()
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
 
     return transactions
       .filter((t) => {
-        const transactionDate = new Date(t.date)
+        const transactionDate = new Date(t.date);
         return (
           t.type === 'expense' &&
           transactionDate.getMonth() === currentMonth &&
           transactionDate.getFullYear() === currentYear
-        )
+        );
       })
-      .reduce((sum, t) => sum + t.amount, 0)
-  }, [transactions])
+      .reduce((sum, t) => sum + t.amount, 0);
+  }, [transactions]);
 
   const expensesByCategory = useMemo(() => {
-    const categoryTotals = new Map<string, number>()
+    const categoryTotals = new Map<string, number>();
 
     transactions
       .filter((t) => t.type === 'expense')
       .forEach((t) => {
-        const current = categoryTotals.get(t.category) || 0
-        categoryTotals.set(t.category, current + t.amount)
-      })
+        const current = categoryTotals.get(t.category) || 0;
+        categoryTotals.set(t.category, current + t.amount);
+      });
 
     return Array.from(categoryTotals.entries())
       .map(([category, amount]) => ({
@@ -242,16 +242,16 @@ export const useFinancialData = () => {
         amount,
         color: categories.find((c) => c.name === category)?.color || '#6B7280',
       }))
-      .sort((a, b) => b.amount - a.amount)
-  }, [transactions, categories])
+      .sort((a, b) => b.amount - a.amount);
+  }, [transactions, categories]);
 
   const addTransaction = (transaction: Omit<Transaction, 'id'>) => {
     const newTransaction: Transaction = {
       ...transaction,
       id: Date.now().toString(),
-    }
-    setTransactions((prev) => [newTransaction, ...prev])
-  }
+    };
+    setTransactions((prev) => [newTransaction, ...prev]);
+  };
 
   const addGoal = (goal: Omit<Goal, 'id' | 'createdAt' | 'completed'>) => {
     const newGoal: Goal = {
@@ -259,35 +259,35 @@ export const useFinancialData = () => {
       id: Date.now().toString(),
       createdAt: new Date().toISOString(),
       completed: false,
-    }
-    setGoals((prev) => [...prev, newGoal])
-  }
+    };
+    setGoals((prev) => [...prev, newGoal]);
+  };
 
   const updateGoal = (id: string, updates: Partial<Goal>) => {
     setGoals((prev) =>
-      prev.map((goal) => (goal.id === id ? { ...goal, ...updates } : goal))
-    )
-  }
+      prev.map((goal) => (goal.id === id ? { ...goal, ...updates } : goal)),
+    );
+  };
 
   const addCategory = (category: Omit<Category, 'id'>) => {
     const newCategory: Category = {
       ...category,
       id: Date.now().toString(),
-    }
-    setCategories((prev) => [...prev, newCategory])
-  }
+    };
+    setCategories((prev) => [...prev, newCategory]);
+  };
 
   const updateCategory = (id: string, updates: Partial<Category>) => {
     setCategories((prev) =>
       prev.map((category) =>
-        category.id === id ? { ...category, ...updates } : category
-      )
-    )
-  }
+        category.id === id ? { ...category, ...updates } : category,
+      ),
+    );
+  };
 
   const deleteCategory = (id: string) => {
-    setCategories((prev) => prev.filter((category) => category.id !== id))
-  }
+    setCategories((prev) => prev.filter((category) => category.id !== id));
+  };
 
   return {
     transactions,
@@ -305,5 +305,5 @@ export const useFinancialData = () => {
     addCategory,
     updateCategory,
     deleteCategory,
-  }
-}
+  };
+};

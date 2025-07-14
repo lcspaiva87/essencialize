@@ -1,5 +1,15 @@
-'use client'
+'use client';
 
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from '@/components/ui/sidebar';
 import {
   BarChart3,
   CreditCard,
@@ -10,19 +20,9 @@ import {
   Tag,
   Target,
   TrendingUp,
-} from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from '@/components/ui/sidebar'
+} from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const navigationItems = [
   { title: 'Dashboard', url: '/dashboard', icon: BarChart3 },
@@ -34,13 +34,13 @@ const navigationItems = [
   { title: 'Relatórios', url: '/relatorios', icon: FileText },
   { title: 'Metas', url: '/metas', icon: Target },
   { title: 'Perfil', url: '/perfil', icon: Settings },
-]
+];
 
 export function AppSidebar() {
-  const { state } = useSidebar()
-  const pathname = usePathname()
+  const { state } = useSidebar();
+  const pathname = usePathname();
 
-  const isActive = (path: string) => pathname === path
+  const isActive = (path: string) => pathname === path;
 
   return (
     <Sidebar
@@ -84,5 +84,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

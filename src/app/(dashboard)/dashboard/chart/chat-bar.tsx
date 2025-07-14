@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 
-import { type ChartConfig, ChartContainer } from '@/components/ui/chart'
+import { type ChartConfig, ChartContainer } from '@/components/ui/chart';
 
 function ChatBar() {
   const chartData = [
@@ -78,7 +78,7 @@ function ChatBar() {
       Despesa: 4900,
       'Fluxo de Caixa Líquido': 2600,
     },
-  ]
+  ];
   const chartConfig = {
     income: {
       label: 'Receitas',
@@ -92,7 +92,7 @@ function ChatBar() {
       label: 'Saldo Acumulado',
       color: '#3B82F6',
     },
-  } satisfies ChartConfig
+  } satisfies ChartConfig;
 
   return (
     <ChartContainer
@@ -150,7 +150,7 @@ function ChatBar() {
         <Legend />
       </LineChart>
     </ChartContainer>
-  )
+  );
 }
 
 function ChartHeader() {
@@ -158,7 +158,7 @@ function ChartHeader() {
     <div className="flex items-center gap-2">
       <h2 className="font-normal text-base text-gray-500">Fluxo de caixa</h2>
     </div>
-  )
+  );
 }
 
 export function ChartContent() {
@@ -167,5 +167,5 @@ export function ChartContent() {
       <ChartHeader />
       <ChatBar />
     </div>
-  )
+  );
 }
