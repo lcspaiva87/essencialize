@@ -1,50 +1,54 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
+import {
+  Root as AvatarRoot,
+  AvatarFallback as RadixAvatarFallback,
+  AvatarImage as RadixAvatarImage,
+} from '@radix-ui/react-avatar'
+import React from 'react'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+  React.ElementRef<typeof AvatarRoot>,
+  React.ComponentPropsWithoutRef<typeof AvatarRoot>
 >(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Root
-    ref={ref}
+  <AvatarRoot
     className={cn(
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+      'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
       className
     )}
+    ref={ref}
     {...props}
   />
 ))
-Avatar.displayName = AvatarPrimitive.Root.displayName
+Avatar.displayName = AvatarRoot.displayName
 
 const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+  React.ElementRef<typeof RadixAvatarImage>,
+  React.ComponentPropsWithoutRef<typeof RadixAvatarImage>
 >(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Image
+  <RadixAvatarImage
+    className={cn('aspect-square h-full w-full', className)}
     ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
     {...props}
   />
 ))
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
+AvatarImage.displayName = RadixAvatarImage.displayName
 
 const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+  React.ElementRef<typeof RadixAvatarFallback>,
+  React.ComponentPropsWithoutRef<typeof RadixAvatarFallback>
 >(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Fallback
-    ref={ref}
+  <RadixAvatarFallback
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      'flex h-full w-full items-center justify-center rounded-full bg-muted',
       className
     )}
+    ref={ref}
     {...props}
   />
 ))
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+AvatarFallback.displayName = RadixAvatarFallback.displayName
 
 export { Avatar, AvatarImage, AvatarFallback }

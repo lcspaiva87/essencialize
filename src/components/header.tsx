@@ -1,14 +1,19 @@
-import { ModalCreateEarnings } from "@/app/(dashboard)/receitas/_components/modal-create-earnings";
-import { Button } from "./ui/button";
+import type React from 'react'
+import type { JSX } from 'react'
+import { ModalCustom } from '@/app/(dashboard)/receitas/_components/modal-create-earnings'
+import type { FormField } from '@/types/form-filed-types'
+import { Button } from './ui/button'
 
 interface HeaderProps {
-  title: string;
-  description: string;
-  buttonText?: string;
-  buttonIcon?: React.ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
-  isCreate: boolean;
+  title: string
+  description: string
+  buttonText?: string
+  buttonIcon?: React.ReactNode
+  onClick?: () => void
+  disabled?: boolean
+  isCreate: boolean
+  fields: FormField[]
+  bgColor?: string
 }
 
 export default function Header({
@@ -19,41 +24,50 @@ export default function Header({
   onClick,
   disabled,
   isCreate,
+  fields,
+  bgColor,
 }: HeaderProps) {
-  let actionButton = null; // Initialize a variable to hold the button
+  let actionButton: JSX.Element | null = null // Initialize a variable to hold the button
 
-  if (buttonText) { // Check if buttonText exists
-    actionButton = (
-      <>
-        {isCreate ? <ModalCreateEarnings buttonText={buttonText} buttonIcon={buttonIcon} /> : (
-          <Button
-            onClick={onClick}
-            aria-label={buttonText}
-            disabled={disabled}
-
-            className="flex items-center gap-2  text-white"
-          >
-            {buttonIcon && <span>{buttonIcon}</span>}
-            {buttonText}
-          </Button>
-        )}
-      </>
-    );
+  if (buttonText) {
+    // Check if buttonText exists
+    actionButton = isCreate ? (
+      <ModalCustom
+        bgColor={bgColor}
+        buttonIcon={buttonIcon}
+        buttonText={buttonText}
+        fields={fields}
+        onSubmit={() => {
+          /* Intencionalmente vazio */
+        }}
+      />
+    ) : (
+      <Button
+        aria-label={buttonText}
+        className="flex items-center gap-2 text-white"
+        disabled={disabled}
+        onClick={onClick}
+      >
+        {buttonIcon && <span>{buttonIcon}</span>}
+        {buttonText}
+      </Button>
+    )
   }
 
   return (
-    <header className=" flex items-center justify-between p-6" aria-labelledby="main-header-title">
+    <header className=" flex items-center justify-between p-6">
       <div>
-        <h1 id="main-header-title" className="text-3xl font-bold text-gray-900 mb-2">
+        <h1
+          className="mb-2 font-bold text-3xl text-gray-900"
+          id="main-header-title"
+        >
           {title}
         </h1>
-        <p className="text-gray-600">
-          {description}
-        </p>
+        <p className="text-gray-600">{description}</p>
       </div>
       <div className="flex items-center gap-2">
         {actionButton} {/* Render the button if it was assigned */}
       </div>
     </header>
-  );
+  )
 }
