@@ -11,15 +11,17 @@ interface ModalCreateEarningsProps {
 
 export function ModalCreateEarnings({ buttonText, buttonIcon }: ModalCreateEarningsProps) {
   return (
-    <Dialog>
+    <Dialog
+
+    >
       <DialogTrigger>
         <Button className="flex items-center gap-2  text-white">
           {buttonIcon && <>{buttonIcon}</>}
           {buttonText}
         </Button>
       </DialogTrigger>
-      <DialogContent className="p-0">
-        <DialogHeader className="bg-primary p-4  flex  justify-between">
+      <DialogContent className="p-0 ">
+        <DialogHeader className="bg-primary p-4  flex  justify-between rounded-t-md">
           <DialogTitle className="text-white flex  gap-2">
             {buttonIcon && <>{buttonIcon}</>}
             {buttonText}
