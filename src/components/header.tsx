@@ -1,3 +1,4 @@
+import { ModalCreateEarnings } from "@/app/(dashboard)/receitas/_components/modal-create-earnings";
 import { Button } from "./ui/button";
 
 interface HeaderProps {
@@ -7,6 +8,7 @@ interface HeaderProps {
   buttonIcon?: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
+  isCreate: boolean;
 }
 
 export default function Header({
@@ -16,21 +18,26 @@ export default function Header({
   buttonIcon,
   onClick,
   disabled,
+  isCreate,
 }: HeaderProps) {
   let actionButton = null; // Initialize a variable to hold the button
 
   if (buttonText) { // Check if buttonText exists
     actionButton = (
-      <Button
-        onClick={onClick}
-        aria-label={buttonText}
-        disabled={disabled}
+      <>
+        {isCreate ? <ModalCreateEarnings buttonText={buttonText} buttonIcon={buttonIcon} /> : (
+          <Button
+            onClick={onClick}
+            aria-label={buttonText}
+            disabled={disabled}
 
-        className="flex items-center gap-2  text-white"
-      >
-        {buttonIcon && <span>{buttonIcon}</span>}
-        {buttonText}
-      </Button>
+            className="flex items-center gap-2  text-white"
+          >
+            {buttonIcon && <span>{buttonIcon}</span>}
+            {buttonText}
+          </Button>
+        )}
+      </>
     );
   }
 
