@@ -16,3 +16,12 @@ export const badgevariant = tv({
     },
   },
 });
+export const badgevariantRecurrent = tv({
+  base: 'rounded-full  text-xs font-medium text-white flex items-center !w-12',
+  variants: {
+    status: {
+      yes: 'bg-green-500 hover:bg-green-600 ',
+      no: 'bg-red-500 hover:bg-red-600 ',
+    },
+  },
+});

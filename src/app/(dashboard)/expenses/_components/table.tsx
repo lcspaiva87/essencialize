@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { badgevariant } from '@/lib/utils';
+import { badgevariant, badgevariantRecurrent } from '@/lib/utils';
 import type { Expenses } from '@/types/expenses-types';
 import { MoreHorizontal } from 'lucide-react';
 import { Edit, Eye, Trash2 } from 'lucide-react';
@@ -34,8 +34,8 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
             <TableHead>Descrição</TableHead>
             <TableHead>Categoria</TableHead>
             <TableHead>Valor</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Recorrente</TableHead>
+            <TableHead className="w-[100px]">Status</TableHead>
+            <TableHead className="!w-12">Recorrente</TableHead>
             <TableHead className="w-[100px]">Ações</TableHead>
           </TableRow>
         </TableHeader>
@@ -55,7 +55,6 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
               </TableCell>
               <TableCell>
                 <Badge
-                  variant="outline"
                   className={badgevariant({
                     status: receita.status as 'pago' | 'pendente' | 'cancelado',
                   })}
@@ -66,7 +65,15 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
                   {receita.status}
                 </Badge>
               </TableCell>
-              <TableCell>{receita.recorrente ? 'Sim' : 'Não'}</TableCell>
+              <TableCell>
+                <Badge
+                  className={badgevariantRecurrent({
+                    status: receita.recorrente ? 'yes' : 'no',
+                  })}
+                >
+                  {receita.recorrente ? 'Sim' : 'Não'}
+                </Badge>
+              </TableCell>
               <TableCell>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
