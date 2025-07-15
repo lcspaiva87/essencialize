@@ -1,4 +1,4 @@
-import { ModalCustom } from '@/app/(dashboard)/receitas/_components/modal-create-earnings';
+import { ModalCustom } from '@/components/modal-custom';
 import type { FormField } from '@/types/form-filed-types';
 import type React from 'react';
 import type { JSX } from 'react';
@@ -27,7 +27,7 @@ export default function Header({
   fields,
   bgColor,
 }: HeaderProps) {
-  let actionButton: JSX.Element | null = null; // Initialize a variable to hold the button
+  let actionButton: JSX.Element | null = null;
 
   if (buttonText) {
     actionButton = isCreate ? (

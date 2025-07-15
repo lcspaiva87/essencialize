@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { DollarSign, Wallet, X } from 'lucide-react';
+import { DollarSign, PlusCircle, Wallet, X } from 'lucide-react';
 
 type FieldType =
   | 'text'
@@ -209,7 +209,7 @@ export function ModalCustom({
     <Dialog>
       <DialogTrigger>
         <Button className="flex items-center gap-2 text-white">
-          {buttonIcon && <>{buttonIcon}</>}
+          <PlusCircle size={20} />
           {buttonText}
         </Button>
       </DialogTrigger>
