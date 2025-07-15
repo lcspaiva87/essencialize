@@ -66,11 +66,7 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
                 </Badge>
               </TableCell>
               <TableCell>
-                <Badge
-                  className={badgevariantRecurrent({
-                    status: receita.recorrente ? 'yes' : 'no',
-                  })}
-                >
+                <Badge className="rounded-full bg-transparent border border-gray-300 text-xs font-medium text-gray-500 flex items-center !w-12">
                   {receita.recorrente ? 'Sim' : 'Não'}
                 </Badge>
               </TableCell>
