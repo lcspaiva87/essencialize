@@ -29,7 +29,7 @@ const navigationItems = [
   { title: 'Receitas', url: '/receitas', icon: TrendingUp },
   { title: 'Despesas', url: '/expenses', icon: CreditCard },
   { title: 'Transações', url: '/transacoes', icon: DollarSign },
-  { title: 'Categorias', url: '/categorias', icon: Tag },
+  { title: 'Categorias', url: '/categories', icon: Tag },
   { title: 'Mercado', url: '/mercado', icon: ShoppingCart },
   { title: 'Relatórios', url: '/relatorios', icon: FileText },
   { title: 'Metas', url: '/metas', icon: Target },
