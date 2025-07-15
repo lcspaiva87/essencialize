@@ -1,42 +1,52 @@
 'use client';
 import Header from '@/components/header';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue } from '@/components/ui/select';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { FormField } from '@/types/form-filed-types';
 import {
+  CircleCheck,
+  CircleX,
+  DollarSign,
   Edit,
   Eye,
   FilterIcon,
   MoreHorizontal,
+  Receipt,
   Save,
   SearchIcon,
   Trash2,
+  TrendingUp,
+  TriangleAlert,
   X,
 } from 'lucide-react';
+import { useState } from 'react';
+
+interface Expense {
+  id: string;
+  date: string;
+  description: string;
+  category: string;
+  amount: number;
+  status: 'pago' | 'pendente';
+  receipt: boolean;
+}
+import type { Expenses } from '@/types/expenses-types';
+import { tv } from 'tailwind-variants';
+import { TableExpenses } from './_components/table';
 
 export default function Receitas() {
-  const Earnings = [
+  const Earnings: Expenses[] = [
     {
       id: '1',
       data: '2024-01-15',
       descricao: 'Compra de ingredientes',
       categoria: 'Alimentação',
       valor: 150.0,
+      status: 'pago',
       recorrente: true,
     },
     {
@@ -45,7 +55,55 @@ export default function Receitas() {
       descricao: 'Pagamento de aluguel',
       categoria: 'Moradia',
       valor: 1200.0,
+      status: 'pendente',
       recorrente: false,
+    },
+    {
+      id: '3',
+      data: '2024-01-25',
+      descricao: 'Pagamento de conta de luz',
+      categoria: 'Moradia',
+      valor: 100.0,
+      status: 'cancelado',
+      recorrente: false,
+    },
+  ];
+  const mockExpenses: Expense[] = [
+    {
+      id: '1',
+      date: '07/03/2025',
+      description: 'LUZ',
+      category: 'Moradia',
+      amount: 140.0,
+      status: 'pago',
+      receipt: false,
+    },
+    {
+      id: '2',
+      date: '06/03/2025',
+      description: 'ÁGUA',
+      category: 'Moradia',
+      amount: 109.0,
+      status: 'pago',
+      receipt: false,
+    },
+    {
+      id: '3',
+      date: '05/03/2025',
+      description: 'Supermercado',
+      category: 'Alimentação',
+      amount: 85.5,
+      status: 'pendente',
+      receipt: true,
+    },
+    {
+      id: '4',
+      date: '04/03/2025',
+      description: 'Combustível',
+      category: 'Transporte',
+      amount: 120.0,
+      status: 'pago',
+      receipt: true,
     },
   ];
   const expensesFields: FormField[] = [
@@ -123,6 +181,20 @@ export default function Receitas() {
       description: 'Marque se esta despesa é recorrente',
     },
   ];
+
+  const [expenses, setExpenses] = useState<Expense[]>(mockExpenses);
+
+  const totalExpenses = expenses.reduce(
+    (sum, expense) => sum + expense.amount,
+    0,
+  );
+  const paidExpenses = expenses
+    .filter((e) => e.status === 'pago')
+    .reduce((sum, expense) => sum + expense.amount, 0);
+  const pendingExpenses = expenses
+    .filter((e) => e.status === 'pendente')
+    .reduce((sum, expense) => sum + expense.amount, 0);
+
   return (
     <main className="w-full px-4 py-8 sm:px-6 lg:px-8">
       <Header
@@ -134,7 +206,70 @@ export default function Receitas() {
         isCreate={true}
         title="Gerenciamento de Despesas"
       />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">
+                  Total de Despesas
+                </p>
+                <p className="text-2xl font-light text-red-600">
+                  R${' '}
+                  {totalExpenses.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+              <div className="p-3 bg-red-100 rounded-full">
+                <Receipt className="text-red-600" size={24} />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">
+                  Despesas Pagas
+                </p>
+                <p className="text-2xl font-light text-green-600">
+                  R${' '}
+                  {paidExpenses.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+              <div className="p-3 bg-green-100 rounded-full">
+                <TrendingUp className="text-green-600" size={24} />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">
+                  Despesas Pendentes
+                </p>
+                <p className="text-2xl font-light text-yellow-600">
+                  R${' '}
+                  {pendingExpenses.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
+              </div>
+              <div className="p-3 bg-yellow-100 rounded-full">
+                <Receipt className="text-yellow-600" size={24} />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
       <section
         aria-label="Filtros de receitas"
         className="flex flex-col gap-6 rounded-xl border border-gray-100 bg-white p-6 shadow-sm"
@@ -197,7 +332,22 @@ export default function Receitas() {
               Filtre as receitas por categoria
             </span>
           </fieldset>
-
+          <fieldset className="flex flex-col gap-2">
+            <label
+              className="font-medium text-gray-500 text-sm"
+              htmlFor="status"
+            >
+              Status
+            </label>
+            <Select name="status">
+              <SelectTrigger aria-describedby="status-desc" id="status">
+                <SelectValue placeholder="Selecione um status" />
+              </SelectTrigger>
+            </Select>
+            <span className="sr-only" id="status-desc">
+              Filtre as receitas por status
+            </span>
+          </fieldset>
           <fieldset className="flex flex-col gap-2">
             <label
               className="font-medium text-gray-500 text-sm"
@@ -230,62 +380,7 @@ export default function Receitas() {
             </Button>
           </div>
         </form>
-        <div className="overflow-x-auto">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[250px]">Data</TableHead>
-                <TableHead>Descrição</TableHead>
-                <TableHead>Categoria</TableHead>
-                <TableHead>Valor</TableHead>
-                <TableHead>Recorrente</TableHead>
-                <TableHead className="w-[100px]">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {Earnings.map((receita) => (
-                <TableRow key={receita.id}>
-                  <TableCell className="font-medium">
-                    {new Date(receita.data).toLocaleDateString('pt-BR')}
-                  </TableCell>
-                  <TableCell>{receita.descricao}</TableCell>
-                  <TableCell>{receita.categoria}</TableCell>
-                  <TableCell>
-                    {receita.valor.toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </TableCell>
-                  <TableCell>{receita.recorrente ? 'Sim' : 'Não'}</TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button className="h-8 w-8 p-0" variant="ghost">
-                          <span className="sr-only">Abrir menu</span>
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
-                          <Eye className="mr-2 h-4 w-4" />
-                          Visualizar
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Edit className="mr-2 h-4 w-4" />
-                          Editar
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-600">
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Excluir
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+        <TableExpenses expenses={Earnings} />
       </section>
     </main>
   );
