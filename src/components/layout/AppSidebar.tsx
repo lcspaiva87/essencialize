@@ -30,7 +30,7 @@ const navigationItems = [
   { title: 'Despesas', url: '/expenses', icon: CreditCard },
   { title: 'Transações', url: '/transacoes', icon: DollarSign },
   { title: 'Categorias', url: '/categories', icon: Tag },
-  { title: 'Mercado', url: '/mercado', icon: ShoppingCart },
+  { title: 'Mercado', url: '/market', icon: ShoppingCart },
   { title: 'Relatórios', url: '/relatorios', icon: FileText },
   { title: 'Metas', url: '/metas', icon: Target },
   { title: 'Perfil', url: '/perfil', icon: Settings },
