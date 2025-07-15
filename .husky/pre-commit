@@ -1,2 +1,2 @@
 
-npx next lint --fix && git add . && npx next lint
+npx biome check --fix && git add . && npx biome check

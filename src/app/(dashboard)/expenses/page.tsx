@@ -1,3 +1,4 @@
+'use client';
 import Header from '@/components/header';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,12 +17,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import type { FormField } from '@/types/form-filed-types';
 import {
   Edit,
   Eye,
   FilterIcon,
   MoreHorizontal,
-  PlusIcon,
+  Save,
   SearchIcon,
   Trash2,
   X,
@@ -46,16 +48,91 @@ export default function Receitas() {
       recorrente: false,
     },
   ];
+  const expensesFields: FormField[] = [
+    {
+      id: 'descricao',
+      name: 'descricao',
+      label: 'Descrição',
+      type: 'text',
+      required: true,
+      description: 'Digite a descrição da despesa',
+    },
+    {
+      id: 'valor',
+      name: 'valor',
+      label: 'Valor',
+      type: 'currency',
+      required: true,
+      description: 'Digite o valor da despesa',
+    },
+    {
+      id: 'categoria',
+      name: 'categoria',
+      label: 'Categoria',
+      type: 'select',
+      required: true,
+      placeholder: 'Selecione uma categoria',
+      description: 'Selecione a categoria da despesa',
+      options: [
+        { value: 'alimentacao', label: 'Alimentação' },
+        { value: 'transporte', label: 'Transporte' },
+        { value: 'moradia', label: 'Moradia' },
+        { value: 'saude', label: 'Saúde' },
+        { value: 'lazer', label: 'Lazer' },
+        { value: 'outros', label: 'Outros' },
+      ],
+    },
+    {
+      id: 'data',
+      name: 'data',
+      label: 'Data',
+      type: 'date',
+      required: true,
+      description: 'Digite a data da despesa',
+    },
+    {
+      id: 'status',
+      name: 'status',
+      label: 'Status',
+      type: 'select',
+      description: 'Marque se esta despesa é recorrente',
+      options: [
+        { value: 'pendente', label: 'Pendente' },
+        { value: 'pago', label: 'Pago' },
+        { value: 'cancelado', label: 'Cancelado' },
+      ],
+    },
 
+    {
+      id: 'form-pagamento',
+      name: 'form-pagamento',
+      label: 'Formas de pagamento',
+      type: 'select',
+      description: 'Selecione a forma de pagamento',
+      options: [
+        { value: 'pix', label: 'Pix' },
+        { value: 'cartao', label: 'Cartão' },
+        { value: 'dinheiro', label: 'Dinheiro' },
+      ],
+    },
+    {
+      id: 'despesa-recorrente',
+      name: 'despesa-recorrente',
+      label: 'Despesa recorrente',
+      type: 'checkbox',
+      description: 'Marque se esta despesa é recorrente',
+    },
+  ];
   return (
     <main className="w-full px-4 py-8 sm:px-6 lg:px-8">
       <Header
-        buttonIcon={<PlusIcon className="h-4 w-4" />}
-        buttonText="Nova Receita"
-        description="Gerencie suas receitas de forma eficiente"
-        fields={[]}
+        bgColor="bg-red-400"
+        buttonIcon={<Save className="h-4 w-4" />}
+        buttonText="Nova Despesa"
+        description="Gerencie suas despesas de forma eficiente"
+        fields={expensesFields}
         isCreate={true}
-        title="Gerenciamento de Receitas"
+        title="Gerenciamento de Despesas"
       />
 
       <section
