@@ -105,28 +105,28 @@ const Dashboard: React.FC = () => {
           Ações Rápidas
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <button
+          <Button
             className="flex items-center space-x-3 rounded-lg bg-blue-50 p-4 transition-colors hover:bg-blue-100"
             type="button"
           >
             <CreditCard className="h-5 w-5 text-blue-600" />
             <span className="font-medium text-blue-900">Nova Transação</span>
-          </button>
-          <button
+          </Button>
+          <Button
             className="flex items-center space-x-3 rounded-lg bg-green-50 p-4 transition-colors hover:bg-green-100"
             type="button"
           >
             <Target className="h-5 w-5 text-green-600" />
             <span className="font-medium text-green-900">Criar Meta</span>
-          </button>
-          <button
+          </Button>
+          <Button
             className="flex items-center space-x-3 rounded-lg bg-purple-50 p-4 transition-colors hover:bg-purple-100"
             type="button"
           >
             <TrendingUp className="h-5 w-5 text-purple-600" />
             <span className="font-medium text-purple-900">Gerar Relatório</span>
-          </button>
-          <button
+          </Button>
+          <Button
             className="flex items-center space-x-3 rounded-lg bg-orange-50 p-4 transition-colors hover:bg-orange-100"
             type="button"
           >
@@ -134,7 +134,7 @@ const Dashboard: React.FC = () => {
             <span className="font-medium text-orange-900">
               Definir Orçamento
             </span>
-          </button>
+          </Button>
         </div>
       </div>
     </main>

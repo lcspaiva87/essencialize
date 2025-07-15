@@ -30,13 +30,25 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[250px]">Data</TableHead>
-            <TableHead>Descrição</TableHead>
-            <TableHead>Categoria</TableHead>
-            <TableHead>Valor</TableHead>
-            <TableHead className="w-[100px]">Status</TableHead>
-            <TableHead className="!w-12">Recorrente</TableHead>
-            <TableHead className="w-[100px]">Ações</TableHead>
+            <TableHead className="w-[250px] font-semibold text-gray-700">
+              Data
+            </TableHead>
+            <TableHead className="font-semibold text-gray-700">
+              Descrição
+            </TableHead>
+            <TableHead className="font-semibold text-gray-700">
+              Categoria
+            </TableHead>
+            <TableHead className="font-semibold text-gray-700">Valor</TableHead>
+            <TableHead className="w-[100px] font-semibold text-gray-700">
+              Status
+            </TableHead>
+            <TableHead className="!w-12 font-semibold text-gray-700">
+              Recorrente
+            </TableHead>
+            <TableHead className="w-[100px] font-semibold text-gray-700">
+              Ações
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -66,7 +78,7 @@ export function TableExpenses({ expenses }: TableExpensesProps) {
                 </Badge>
               </TableCell>
               <TableCell>
-                <Badge className="rounded-full bg-transparent border border-gray-300 text-xs font-medium text-gray-500 flex items-center !w-12">
+                <Badge variant="outline" className="text-gray-600 rounded-full">
                   {receita.recorrente ? 'Sim' : 'Não'}
                 </Badge>
               </TableCell>
