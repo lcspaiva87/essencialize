@@ -1,4 +1,11 @@
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { X } from 'lucide-react';
@@ -88,22 +95,15 @@ export function CategoryModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle>
             {category ? 'Editar Categoria' : 'Nova Categoria'}
-          </h2>
-          <Button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            aria-label="Fechar modal"
-          >
-            <X className="w-5 h-5 text-gray-400" />
-          </Button>
-        </div>
+          </DialogTitle>
+        </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className=" space-y-6">
           <div>
             <Label className="block text-sm font-medium text-gray-700 mb-2">
               Nome da Categoria
@@ -152,6 +152,7 @@ export function CategoryModal({
                 <Button
                   key={icon}
                   type="button"
+                  variant="outline"
                   onClick={() => setFormData({ ...formData, icon })}
                   className={`p-3 rounded-lg border-2 transition-colors ${
                     formData.icon === icon
@@ -197,7 +198,7 @@ export function CategoryModal({
             </Button>
           </div>
         </form>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

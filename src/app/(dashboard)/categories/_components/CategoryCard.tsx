@@ -48,19 +48,23 @@ export function CategoryCard({
 
         <div className="relative">
           <Button
+            type="button"
+            variant="ghost"
             onClick={() => setShowMenu(!showMenu)}
             onKeyDown={handleKeyDown}
-            className="p-1 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="p-1 rounded-lg hover:text-gray-100 hover:bg-gray-200 w-8 h-8"
             aria-label={`Opções para ${category.name}`}
             aria-expanded={showMenu}
             aria-haspopup="true"
           >
-            <MoreVertical className="w-4 h-4 text-gray-400" />
+            <MoreVertical className="w-4 h-4 text-gray-400 hover:text-gray-100" />
           </Button>
 
           {showMenu && (
             <div className="absolute right-0 top-8 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
               <Button
+                type="button"
+                variant="ghost"
                 onClick={() => {
                   onEdit();
                   setShowMenu(false);
@@ -71,6 +75,8 @@ export function CategoryCard({
                 Editar
               </Button>
               <Button
+                type="button"
+                variant="ghost"
                 onClick={() => {
                   onDelete();
                   setShowMenu(false);

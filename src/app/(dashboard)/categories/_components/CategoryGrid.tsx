@@ -1,5 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Search } from 'lucide-react';
 import React, { useState } from 'react';
 import { CategoryCard } from './CategoryCard';
 import { CategoryModal } from './CategoryModal';
@@ -180,6 +182,14 @@ export function CategoryGrid() {
 
   return (
     <div className="flex flex-col gap-4">
+      <div className="relative max-w-md">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <Input
+          type="text"
+          placeholder="Buscar categorias..."
+          className="pl-10 pr-4 py-2 w-full border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+        />
+      </div>
       <section>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-gray-900">
