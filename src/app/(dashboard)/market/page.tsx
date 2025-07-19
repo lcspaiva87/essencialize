@@ -511,6 +511,7 @@ export default function ShoppingList() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center space-x-2">
                       <Button
+                        variant="ghost"
                         onClick={() => handleEditItem(item)}
                         className="text-orange-600 hover:text-orange-900 p-1 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
                         aria-label={`Editar ${item.name}`}
@@ -518,6 +519,7 @@ export default function ShoppingList() {
                         <Edit2 className="w-4 h-4" />
                       </Button>
                       <Button
+                        variant="ghost"
                         onClick={() => handleDeleteItem(item.id)}
                         className="text-red-600 hover:text-red-900 p-1 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
                         aria-label={`Excluir ${item.name}`}
